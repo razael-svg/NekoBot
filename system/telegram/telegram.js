@@ -1140,7 +1140,7 @@ bot.on('text', async (ctx) => {
     }
 })
 
-bot.on("message", (ctx, next) => {
+bot.on("message", async (ctx, next) => {
     logger(ctx);
     await next();
 });    

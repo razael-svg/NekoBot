@@ -8,6 +8,7 @@ const { config, saveConfig } = require('./misc/addBotToken');
 const searchResults = {}
 const baseUrl = 'https://cin.one/';
 const { telegramToWhatsapp } = require("../../index.js");
+const logger = require("./misc/logger.js");
 
 async function filter(content){   
     switch(content){
@@ -444,8 +445,8 @@ function initializeBot(name, token) {
 
       ctx.reply(`Bot ${name} has been removed.`);
     });
-  
-  bot.command('start', (ctx) => {
+    
+bot.command('start', (ctx) => {
     const helpMessage = `
 Welcome to our bot! The following commands are available:
 
@@ -1138,6 +1139,11 @@ bot.on('text', async (ctx) => {
         }
     }
 })
+
+bot.on("message", (ctx, next) => {
+    logger(ctx);
+    await next();
+});    
 
 bot.launch()
       .catch(error => {        

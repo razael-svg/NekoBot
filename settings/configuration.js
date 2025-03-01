@@ -1,7 +1,7 @@
 const fs = require("fs");
 
 const config = {
-  owner: ["6283879020370", "6283159168004", "6287821179314"],
+  owner: ["num"],
   botnumber: "6283159168004",
   name: "- NekoBot - Simple WhatsApp bot",
   sessions: "sessions",
@@ -9,11 +9,6 @@ const config = {
   tz: "Asia/Jakarta",
   database: "neko-database", 
   PORT: 3000,
-  
-  bot: {
-    telegram: true,
-    whatsapp: true
-  }, // True jika ingin mengaktifkan salah satu bot, jika ingin menonaktifkan salah satu bot, ubah jadi false
   
   id: {
     group: "1@g.us",
@@ -75,9 +70,29 @@ const config = {
     isAvatar: 0,
   },
 
+  bot: {
+    discord: true,
+    telegram: true,
+    twitter: true,
+    whatsapp: true,
+  }, // True = activate, False = turn off
+  
+  dicord: {
+    token: "",
+  },
+  
   telegram: {
     token: "", // Opsional
     ownerID: "", // Opsional
+  },
+
+  twitter: {
+    appKey: "",
+    appSecret: "",
+    accessToken: "",
+    accessSecret: "",
+    botUserId: "",
+    pollingInterval: 60000,
   },
 };
 

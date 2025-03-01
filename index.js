@@ -520,7 +520,12 @@ sock.ev.on("messages.upsert", async (cht) => {
         console.error("Error in telegramToWhatsapp:", error);
     }
 }
-  
+
+  module.exports = { telegramToWhatsapp };
+ 
+  if (config.bot.discord) {
+  require('./system/discord/discord.js')
+} 
   if (config.bot.whatsapp) {
   initializeSystem();
   system();
@@ -528,5 +533,7 @@ sock.ev.on("messages.upsert", async (cht) => {
   if (config.bot.telegram) {
   require('./system/telegram/telegram.js');
 }
+  if (config.bot.twitter) {
+  require('./system/twitter/twitter.js');
+}
   app.listen(config.PORT, () => {});
-  module.exports = { telegramToWhatsapp };

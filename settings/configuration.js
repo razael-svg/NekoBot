@@ -71,9 +71,9 @@ const config = {
   },
 
   bot: {
-    discord: true,
-    telegram: true,
-    twitter: true,
+    discord: false,
+    telegram: false,
+    twitter: false,
     whatsapp: true,
   }, // True = activate, False = turn off
   

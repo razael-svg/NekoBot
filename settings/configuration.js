@@ -83,8 +83,8 @@ const config = {
     },
 
     bot: {
-        discord: false,
-        telegram: false,
+        discord: true,
+        telegram: true,
         twitter: false,
         whatsapp: true
     }, // True = activate, False = turn off

@@ -51,9 +51,9 @@ module.exports = {
   function getTimeZones() {
   const now = moment();
 
-  const wib = now.tz("Asia/Jakarta");
-  const wita = now.tz("Asia/Makassar");
-  const wit = now.tz("Asia/Jayapura");
+  const wib = now.clone().tz("Asia/Jakarta");
+  const wita = now.clone().tz("Asia/Makassar");
+  const wit = now.clone().tz("Asia/Jayapura");
 
   function formatTime(momentObj) {
     return momentObj.format("HH:mm:ss");

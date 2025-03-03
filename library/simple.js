@@ -538,6 +538,41 @@ sock.sendStatus = async(content, jids) => {
   }
   return msg;
 }  
+	    sock.getName = async (jid = "", withoutContact = false) => {
+        jid = sock.decodeJid(jid);
+        withoutContact = this.withoutContact || withoutContact;
+        let v;
+        if (jid.endsWith("@g.us"))
+            return new Promise(async (resolve) => {
+                v = (await sock.groupMetadata(jid)) || {};
+                if (!(v.name || v.subject)) v = (await sock.groupMetadata(jid)) || {};
+                resolve(
+                    v.name ||
+                    v.subject ||
+                    PhoneNumber("+" + jid.replace("@s.whatsapp.net", "")).getNumber(
+                        "international",
+                    ),
+                );
+            });
+        else
+            v =
+            jid === "0@s.whatsapp.net" ? {
+                jid,
+                vname: "WhatsApp",
+            } :
+            areJidsSameUser(jid, sock.user.id) ?
+            sock.user : {};
+        return (
+            (withoutContact ? "" : v.name) ||
+            v.subject ||
+            v.vname ||
+            v.notify ||
+            v.verifiedName ||
+            PhoneNumber("+" + jid.replace("@s.whatsapp.net", "")).getNumber(
+                "international",
+            )
+        );
+    };
   sock.sendMessageModify = async (jid, text, msg, options = {}) => {
         const {
             largeThumb = false,

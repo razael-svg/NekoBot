@@ -1,7 +1,7 @@
 const fs = require("fs");
 
 const config = {
-  owner: ["6283879020370", "6283879020370"],
+  owner: ["nomor", "kamu"],
   botnumber: "6283159168004",
   name: "- NekoBot - Simple WhatsApp bot",
   sessions: "sessions",
